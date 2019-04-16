@@ -12,7 +12,15 @@ using namespace CGL;
 
 void Plane::collide(PointMass &pm) {
   // TODO (Part 3): Handle collisions with planes.
-
+  Vector3D movingDir = pm.position - pm.last_position;
+  //Checking if line goes through plane, using 2 points to check angles with plane normal.
+  if (dot((pm.last_position-point), normal) * dot((pm.position-point), normal)<= 0){
+    double tVal = dot((point - pm.position), normal)/dot(movingDir, normal);
+    //Finding distance from last_position to plane
+    Vector3D tangentPoint = pm.last_position + (tVal-SURFACE_OFFSET)*(movingDir);
+    Vector3D correctionVector = tangentPoint - pm.last_position;
+    pm.position = pm.last_position + correctionVector*(1-friction);
+  }
 }
 
 void Plane::render(GLShader &shader) {

@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style>
+  body {
+    padding: 100px;
+    width: 1000px;
+    margin: auto;
+    text-align: left;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    color: #121212;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+</style>
+<title>CS 184 Mesh Editor</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+
+<body>
+
+<h1 align="middle">CS 184: Computer Graphics and Imaging, Spring 2017</h1>
+<h1 align="middle">Project 4: Cloth Simulator</h1>
+<h2 align="middle">Jireh Chew, CS184-agu</h2>
+
+<br><br>
+
+<div>
+
+<h2 align="middle">Overview</h2>
+<p>Give a high-level overview of what you implemented in this project. Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the project.</p>
+
+<h2 align="middle">Part I: Masses and springs</h2>
+
+
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/Part1_all_constraints.png" align="middle" width="400px"/>
+        <figcaption align="middle"><i>All constraints present.</i></figcaption>
+      </td>
+      <td>
+          <img src="images/Part1_no_shearing.png" align="middle" width="400px"/>
+          <figcaption align="middle"><i>No shearing constraints, checkerboard pattern.</i></figcaption>
+        </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="images/Part1_only_shearing.png" align="middle" width="400px"/>
+        <figcaption align="middle"><i>Only shearing, diagonal checkerboard pattern.</i></figcaption>
+      </td>
+      <td>
+          <img src="images/Part1_view_constraints.png" align="middle" width="400px"/>
+          <figcaption align="middle"><i>Close up view on constraints.</i></figcaption>
+        </td>
+    </tr>
+    <br>
+  </table>
+</div>
+
+
+<h2 align="middle">Part II: Simulation via numerical integration</h2>
+
+<p>For all simulations, a frame/s of 30 was used to speed up the animation. All other settings were kept at their original 
+  values, unless otherwise stated.
+</p>
+
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/Part2_original_rho_15_ks_5000.gif" align="middle" width="400px"/>
+        <figcaption align="middle"><i>Original ks = 5000N/m and density = 15g/cm^2.</i></figcaption>
+      </td>
+      <td>
+          <img src="images/Part2_high_ks_100000.gif" align="middle" width="400px"/>
+          <figcaption align="middle"><i>ks = 100000N/m.</i></figcaption>
+        </td>
+    </tr>
+    <br>
+  </table>
+</div>
+
+<br>
+<p>
+  With a higher ks of 100000, we make the springs much stiffer than usual. When the cloth comes to a equilibrium, the 
+  fold of the stiffer cloth is much lesser than the original cloth, as the cloth is less likely to stretch and bend under the same density 
+  of cloth.
+</p>
+
+<br>
+
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/Part2_original_rho_15_ks_5000.gif" align="middle" width="400px"/>
+        <figcaption align="middle"><i>Original ks = 5000N/m and density = 15g/cm^2.</i></figcaption>
+      </td>
+      <td>
+          <img src="images/Part2_high_rho_700.gif" align="middle" width="400px"/>
+          <figcaption align="middle"><i>Density = 700g/cm^2.</i></figcaption>
+        </td>
+    </tr>
+    <br>
+  </table>
+</div>
+
+<br>
+<p>
+  With a higher density, the cloth becomes heavier. Under the same ks, the springs stretch further due to the
+   higher gravitational forces exerted on the point masses as they have higher mass. This results in the equilibrium position being lower than 
+   the control, and the corners are more stretched to accomodate this.
+</p>
+
+<br>
+
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/Part2_original_rho_15_ks_5000.gif" align="middle" width="400px"/>
+        <figcaption align="middle"><i>Original ks = 5000N/m and density = 15g/cm^2.<br>damping at 0.2%</i></figcaption>
+      </td>
+      <td>
+          <img src="images/Part2_high_damping.gif" align="middle" width="400px"/>
+          <figcaption align="middle"><i>Original ks = 5000N/m and density = 15g/cm^2.<br>Damping at 1%.</i></figcaption>
+        </td>
+    </tr>
+    <br>
+  </table>
+</div>
+
+<br>
+<p>
+  With higher damping, the cloth settles into its equilibrium position without any oscillation/bouncing, as a lot of the energy is lost early on. Compared to the control, 
+  which bounces and wobbles before settling into equilibrium, as it is underdamped (to use oscillation and damping terms) while the cloth with 1% damping is overdamped.
+  The curve below illustrates the motion of the two cloths over time, and is representative of any damped systems.
+</p>
+
+<div align="middle">
+  <img src="images/Part2_damping curves.png" align="middle" width="600px"/>
+  <figcaption align="middle"><i>Original cloth is underdamped.<br>Cloth on the right is overdamped.</i></figcaption>
+</div>
+
+<br>
+
+<h2 align="middle">Part III: Handling collisions with other objects</h2>
+
+<p>
+  <div align="middle">
+    <table style="width=100%">
+      <tr>
+        <td>
+          <img src="images/Part3_ks_5000.gif" align="middle" width="400px"/>
+          <figcaption align="middle"><i>ks = 5000.</i></figcaption>
+        </td>
+        <td>
+            <img src="images/Part3_ks_500.gif" align="middle" width="400px"/>
+            <figcaption align="middle"><i>ks = 500.</i></figcaption>
+          </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="images/Part3_ks_50000.gif" align="middle" width="400px"/>
+          <figcaption align="middle"><i>ks = 50000.</i></figcaption>
+        </td>
+        <td>
+            <img src="images/Part3_creative.png" align="middle" width="400px"/>
+            <figcaption align="middle"><i>Leathercloth on plane.</i></figcaption>
+          </td>
+      </tr>
+      <br>
+    </table>
+  </div>
+</p>
+
+<p>
+  For the sphere constraints, as ks increases, we see that the the cloth gets stiffer. At ks = 50000, the cloth is so stiff that 
+  it fails to wrap nicely around the sphere. For ks = 500, the cloth looks silky and falls very nicely over the sphere. These differences are 
+  due to the change in stiffness of the cloth, making the cloth less prone to folding under the forces of gravity.
+</p>
+
+<h2 align="middle">Part IV: Handling self-collisions</h2>
+
+
+
+<h2 align="middle">Part V: Shaders</h2>
+
+<h2 align="middle">Part VI: Additional cloth simulation features!</h2>
+
+
+</body>
+</html>
