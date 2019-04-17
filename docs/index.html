@@ -256,8 +256,106 @@ of the material surface. Next, a fragment shader takes these values and calculat
 accurately calculate the light hitting the particular fragment and cast microshadows if necessary, giving more realism to the material.
 
 <br>
-The Blinn-Phong shading model has 3 parts. The ambient 
+The Blinn-Phong shading model has 3 parts. The ambient light comes from the intensity of the light source with no bias to direction, while the diffuse component is the light reflected using a Lambertian shading model with 
+light reflected equally in all directions and finally the specular portion comes from more direct reflection of the light source that reflects along the long in a lobe.
 </p>
+
+<p>
+    <div align="middle">
+      <table style="width=100%">
+          <tr>
+              <td>
+                  <img src="Images/Part5_phong_ambient.png" align="middle" width="400px"/>
+                  <figcaption align="middle"><i>Ambient light only.</i></figcaption>
+                </td>
+            <td>
+              <img src="Images/Part5_phong_diffuse.png" align="middle" width="400px"/>
+              <figcaption align="middle"><i>Diffuse light only.</i></figcaption>
+            </td>
+          </tr>
+        <tr>
+            <td>
+                <img src="Images/Part5_specular.png" align="middle" width="400px"/>
+                <figcaption align="middle"><i>Specular light only.</i></figcaption>
+              </td>
+          <td>
+            <img src="Images/Part5_phong_all.png" align="middle" width="400px"/>
+            <figcaption align="middle"><i>Full Blinn-Phong model.</i></figcaption>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </p>
+
+  <p>
+      <div align="middle">
+        <table style="width=100%">
+                <img src="Images/Part5_texture.gif" align="middle" width="600px"/>
+                <figcaption align="middle"><i>Sunset texture mapping.</i></figcaption>
+              
+        </table>
+      </div>
+    </p>
+
+    <p>
+        <div align="middle">
+          <table style="width=100%">
+              <tr>
+                  <td>
+                      <img src="Images/Part5_bump.png" align="middle" width="400px"/>
+                      <figcaption align="middle"><i>Bump mapping on cloth.</i></figcaption>
+                    </td>
+                <td>
+                  <img src="Images/Part5_bump_sphere.png" align="middle" width="400px"/>
+                  <figcaption align="middle"><i>Bump mapping on sphere.</i></figcaption>
+                </td>
+              </tr>
+            
+          </table>
+        </div>
+      </p>
+
+      <p>
+          <div align="middle">
+            <table style="width=100%">
+                    <img src="Images/Part5_disp_sphere.png" align="middle" width="600px"/>
+                    <figcaption align="middle"><i>Displacement mapping on sphere.</i></figcaption>
+                  
+            </table>
+          </div>
+        </p>
+
+        <p>
+            <div align="middle">
+              <table style="width=100%">
+                  <tr>
+                      <td>
+                          <img src="Images/Part5_disp_16.png" align="middle" width="400px"/>
+                          <figcaption align="middle"><i>Displacement mapping with resolution at 16.</i></figcaption>
+                        </td>
+                    <td>
+                      <img src="Images/Part5_disp_128.png" align="middle" width="400px"/>
+                      <figcaption align="middle"><i>Displacement mapping with resolution at 128.</i></figcaption>
+                    </td>
+                  </tr>
+                
+              </table>
+            </div>
+          </p>
+
+          <p>
+            The higher resolution sphere looks more bumpy and uneven, as it has higher number of vertices to vary the height of the texture.
+          </p>
+
+          <p>
+              <div align="middle">
+                <table style="width=100%">
+                        <img src="Images/Part5_mirror.png" align="middle" width="600px"/>
+                        <figcaption align="middle"><i>Mirror mapping on sphere and cloth.</i></figcaption>
+                      
+                </table>
+              </div>
+            </p>
 
 <h2 align="middle">Part VI: Additional cloth simulation features!</h2>
 
