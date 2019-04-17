@@ -99,11 +99,11 @@
   <table style="width=100%">
     <tr>
       <td>
-        <img src="images/Part2_original_rho_15_ks_5000.gif" align="middle" width="400px"/>
+        <img src="Images/Part2_original_rho_15_ks_5000.gif" align="middle" width="400px"/>
         <figcaption align="middle"><i>Original ks = 5000N/m and density = 15g/cm^2.</i></figcaption>
       </td>
       <td>
-          <img src="images/Part2_high_rho_700.gif" align="middle" width="400px"/>
+          <img src="Images/Part2_high_rho_700.gif" align="middle" width="400px"/>
           <figcaption align="middle"><i>Density = 700g/cm^2.</i></figcaption>
         </td>
     </tr>
@@ -124,11 +124,11 @@
   <table style="width=100%">
     <tr>
       <td>
-        <img src="images/Part2_original_rho_15_ks_5000.gif" align="middle" width="400px"/>
+        <img src="Images/Part2_original_rho_15_ks_5000.gif" align="middle" width="400px"/>
         <figcaption align="middle"><i>Original ks = 5000N/m and density = 15g/cm^2.<br>damping at 0.2%</i></figcaption>
       </td>
       <td>
-          <img src="images/Part2_high_damping.gif" align="middle" width="400px"/>
+          <img src="Images/Part2_high_damping.gif" align="middle" width="400px"/>
           <figcaption align="middle"><i>Original ks = 5000N/m and density = 15g/cm^2.<br>Damping at 1%.</i></figcaption>
         </td>
     </tr>
@@ -144,7 +144,7 @@
 </p>
 
 <div align="middle">
-  <img src="images/Part2_damping curves.png" align="middle" width="600px"/>
+  <img src="Images/Part2_damping curves.png" align="middle" width="600px"/>
   <figcaption align="middle"><i>Original cloth is underdamped.<br>Cloth on the right is overdamped.</i></figcaption>
 </div>
 
@@ -157,21 +157,21 @@
     <table style="width=100%">
       <tr>
         <td>
-          <img src="images/Part3_ks_5000.gif" align="middle" width="400px"/>
+          <img src="Images/Part3_ks_5000.gif" align="middle" width="400px"/>
           <figcaption align="middle"><i>ks = 5000.</i></figcaption>
         </td>
         <td>
-            <img src="images/Part3_ks_500.gif" align="middle" width="400px"/>
+            <img src="Images/Part3_ks_500.gif" align="middle" width="400px"/>
             <figcaption align="middle"><i>ks = 500.</i></figcaption>
           </td>
       </tr>
       <tr>
         <td>
-          <img src="images/Part3_ks_50000.gif" align="middle" width="400px"/>
+          <img src="Images/Part3_ks_50000.gif" align="middle" width="400px"/>
           <figcaption align="middle"><i>ks = 50000.</i></figcaption>
         </td>
         <td>
-            <img src="images/Part3_creative.png" align="middle" width="400px"/>
+            <img src="Images/Part3_creative.png" align="middle" width="400px"/>
             <figcaption align="middle"><i>Leathercloth on plane.</i></figcaption>
           </td>
       </tr>
@@ -192,31 +192,72 @@
   <div align="middle">
     <table style="width=100%">
       <tr>
-        <td>
-          <img src="images/Part4" align="middle" width="400px"/>
-          <figcaption align="middle"><i>ks = 5000.</i></figcaption>
-        </td>
-        <td>
-            <img src="images/Part3_ks_500.gif" align="middle" width="400px"/>
-            <figcaption align="middle"><i>ks = 500.</i></figcaption>
-          </td>
+          <img src="Images/Part4_default.gif" align="middle" width="600px"/>
+          <figcaption align="middle"><i>Default density of 15g/cm^2 and ks = 5000.</i></figcaption>
       </tr>
       <tr>
+          <td>
+              <img src="Images/Part4_ks_1.gif" align="middle" width="400px"/>
+              <figcaption align="middle"><i>ks = 1.</i></figcaption>
+            </td>
         <td>
-          <img src="images/Part3_ks_50000.gif" align="middle" width="400px"/>
+          <img src="Images/Part4_ks_50000.gif" align="middle" width="400px"/>
           <figcaption align="middle"><i>ks = 50000.</i></figcaption>
         </td>
-        <td>
-            <img src="images/Part3_creative.png" align="middle" width="400px"/>
-            <figcaption align="middle"><i>Leathercloth on plane.</i></figcaption>
-          </td>
       </tr>
-      <br>
     </table>
   </div>
 </p>
 
+<br>
+<p>
+  Decreasing the stiffness of the cloth allows it to bend and fold in smaller pieces. Comparing to higher ks values, the folds in the cloth when it falls for a small ks value result in smaller folds in the 
+  cloth as well. On the other hand, increasing the ks value creates larger cloth folds as it falls. This is in part due to the cloth resisting 
+  the weight of itself as well as the self collision algorithm causing this. 
+</p>
+
+<p>
+    <div align="middle">
+      <table style="width=100%">
+        <tr>
+            <img src="Images/Part4_default.gif" align="middle" width="600px"/>
+            <figcaption align="middle"><i>Default density of 15g/cm^2 and ks = 5000.</i></figcaption>
+        </tr>
+        <tr>
+            <td>
+                <img src="Images/Part4_rho_1.gif" align="middle" width="400px"/>
+                <figcaption align="middle"><i>Density = 1g/cm^2.</i></figcaption>
+              </td>
+          <td>
+            <img src="Images/Part4_rho_1500.gif" align="middle" width="400px"/>
+            <figcaption align="middle"><i>Density = 1500g/cm^2.</i></figcaption>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </p>
+    
+  <p>
+    Having a higher density makes the cloth fall faster and crash into itself more haphazardly. The force of the this fall makes the cloth even bounce off from the ground. This is due to the cloth being heavier.
+     The heavy point masses deform the cloth greatly and thus we see a lot of small folds in the cloth. However, making it lighter makes the cloth fall very gently, and the cloth also appears more smooth. This is due to the lightness of the cloth having very little effect on the deformation of the cloth, and 
+     thus the surface appears smoother. 
+
+  </p>
+
+
 <h2 align="middle">Part V: Shaders</h2>
+
+<p>A shader program offloads the vertex and pixel colour calculation from the CPU to the GPU. By using specific GPU code like GLSL, they do independent calculations 
+on vertices and pixels in parallel (since the GPU has many, less powerful cores compared to the few, powerful CPU cores) and speeds up the graphics pipeline.
+
+<br>
+In particular, a vertex shader applies calculations on vertices of meshes to modify the position and normal of the vertex. If we were to simulate a microstructure on the material, we would change the vertices slightly to account for the minor variations 
+of the material surface. Next, a fragment shader takes these values and calculates the colour of the pixel or fragment based on these normals and positions. So taking the variations into account, the fragment shader then can 
+accurately calculate the light hitting the particular fragment and cast microshadows if necessary, giving more realism to the material.
+
+<br>
+The Blinn-Phong shading model has 3 parts. The ambient 
+</p>
 
 <h2 align="middle">Part VI: Additional cloth simulation features!</h2>
 
